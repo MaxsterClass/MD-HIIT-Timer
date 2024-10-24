@@ -3,9 +3,14 @@ let seconds = timer.textContent;
 
 const countdown = setInterval(countdownClock, 1000);
 
+let circle_progress = document.getElementById("progress-circle");
+
+
+
 function countdownClock() {
     seconds--;
     timer.textContent = seconds;
+    circle_progress.style.strokeDashoffset = (2513 - (2513 * (seconds / 60)) / 100);
 
     if (seconds == 0) {
         clearInterval(countdown);
