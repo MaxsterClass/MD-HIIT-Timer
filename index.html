@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="icons/icon.png"/>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="manifest" href="manifest.json">
+    <script src="script.js" defer></script>
+    <title>HIIT Interval Timer</title>
+  </head>
+  
+  <body id="background">
+    <div class="center">
+      <div class="timer" id="timer">
+        <p id="timer-phase">WARMUP</p>
+        <p id="timer-next-phase">NEXT UP: ACTIVE</p>
+        
+        <div class="container">
+          <svg id="svg-timer-circle" viewBox="0 0 1024 1024">
+            <circle id="outside-circle" cx="50%" cy="50%" r="460"></circle>
+            <circle id="inside-circle" cx="50%" cy="50%" r="460"></circle>
+        </svg>
+          <p id="timer-count">60</p>
+        </div>
+        <p id="rounds">ROUND <span id="current-round">1</span> / <span id="total-rounds">8</span></p>
+        <div class="buttons">
+            <button id="pause-play-button" onclick="pause_play_timer();">
+                <img id="button-icon" src="icons/play-icon.png">
+            </button>
+            <button id="settings-button" onclick="show_settings();">
+                <img id="button-icon" src="icons/settings-icon.png">
+            </button>
+        </div>
+      </div>
+      <div class="controls" id="settings">
+        <p id="settings-header">SETTINGS</p>
+        <div class="controls-div">
+          <label for="active-period">Active period duration</label>
+          <input id="active-period" class="active-period slider" type="range" min="5" max="120" step="1" value="30" oninput="edit_timer(this.className, this.value);"></input>
+          <input id="active-period" class="active-period number" type="number" value="60" oninput="edit_timer(this.className, this.value);"></input>
+        </div>
+        <div class="controls-div">
+          <label for="rest-period">Rest period duration</label>
+          <input id="rest-period" class="rest-period slider" type="range" min="5" max="120" step="1" value="30" oninput="edit_timer(this.className, this.value);"></input>
+          <input id="rest-period" class="rest-period number"type="number" value="30" oninput="edit_timer(this.className, this.value);"></input>
+        </div>
+        <div class="controls-div">
+          <label for="rounds-settings">Total rounds</label>
+          <input id="rounds-settings" class="rounds-settings slider" type="range" min="1" max="30" step="1" value="8" oninput="edit_timer(this.className, this.value);"></input>
+          <input id="rounds-settings" class="rounds-settings number" type="number" value="8" oninput="edit_timer(this.className, this.value);"></input>
+        </div>
+        <div class="controls-div">
+            <label for="warmup-period">Warmup duration</label>
+            <input id="warmup-period" class="warmup-period slider" type="range" min="5" max="120" step="1" value="30" oninput="edit_timer(this.className, this.value);"></input>
+            <input id="warmup-period" class="warmup-period number" type="number" value="60" oninput="edit_timer(this.className, this.value);"></input>
+        </div>
+        <div class="controls-div">
+            <label for="cooldown-period">Cooldown duration</label>
+            <input id="cooldown-period" class="cooldown-period slider" type="range" min="5" max="120" step="1" value="30" oninput="edit_timer(this.className, this.value);"></input>
+            <input id="cooldown-period" class="cooldown-period number" type="number" value="60" oninput="edit_timer(this.className, this.value);"></input>
+        </div>
+        <button onclick="show_settings();"><img id="button-icon" src="icons/back-arrow-icon.png"></button>
+      </div>
+    </div>
+  </body>
+</html>
