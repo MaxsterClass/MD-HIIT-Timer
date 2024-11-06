@@ -10,7 +10,7 @@ let pause_play_button = document.getElementById("pause-play-button");
 
 let timer_visible = true, first_time = false;
 let active_length = 60, rest_length = 30, warmup_length = 60, cooldown_length = 60;
-let phase_duration, phase, countdown = setInterval(count_down_seconds, 50), timer_is_paused = true;
+let phase_duration, phase, countdown = setInterval(count_down_seconds, 1000), timer_is_paused = true;
 
 window.onload = reset_timer();
 
