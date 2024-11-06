@@ -3,7 +3,7 @@ self.addEventListener('install', function(event) {
     event.waitUntil(caches.open('my-cache').then(function(cache) {
         return cache.addAll([
             '/index.html',
-            '/styles.css',
+            '/style.css',
             '/script.js',
             '/icons/icon-192x192.png',
             '/icons/icon-512x512.png',
