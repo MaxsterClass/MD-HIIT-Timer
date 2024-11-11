@@ -3,10 +3,10 @@
 body {
     --bg: #282828;
     --primary: #111;
-    --WARMUP: orange;
+    --WARMUP: #FFA500;
     --ACTIVE: #EA4C46;
-    --REST: #33A036;
-    --COOLDOWN: lightblue;
+    --REST: #53C056;
+    --COOLDOWN: #ADD8E6;
     --PAUSED: #777;
     padding:0;
     margin:0;
@@ -173,9 +173,10 @@ circle {
     stroke-width: 100px;
 }
 
-circle:nth-child(2) {
-    stroke: var(--primary);
+#inside-circle {
+    stroke: white;
     stroke-dasharray: 2890;
+    stroke-width: 100px;
 }
 
 #pause-play-button:hover, #settings-button:hover, button:hover {

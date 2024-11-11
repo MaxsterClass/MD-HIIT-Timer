@@ -10,7 +10,7 @@ let pause_play_button = document.getElementById("pause-play-button");
 
 let timer_visible = true, first_time = false;
 let active_length = 60, rest_length = 30, warmup_length = 60, cooldown_length = 60;
-let phase_duration, phase, countdown = setInterval(count_down_seconds, 1000), timer_is_paused = true;
+let phase_duration, phase, countdown = setInterval(count_down_seconds, 10), timer_is_paused = true, ticks  = 0;
 
 window.onload = reset_timer();
 
@@ -22,7 +22,6 @@ function reset_timer () {
     timer_phase.textContent = phase;
     phase_duration = warmup_length;
     current_round.textContent = 1;
-    circle.style.stroke = "white";
     circle.style.strokeDashoffset = 2890;
 };
 
@@ -41,7 +40,7 @@ function change_phase () {
             timer_next_phase.textContent = "NEXT UP: ACTIVE";
             timer_count.textContent = phase_duration = rest_length;
             timer_phase.textContent = phase;
-            if (current_round.textContent == total_rounds.textContent) {
+            if (current_round.textContent >= total_rounds.textContent) {
                 phase = "COOLDOWN";
                 timer_next_phase.textContent = "ALMOST DONE!";
                 timer_count.textContent = phase_duration = cooldown_length;
@@ -54,7 +53,7 @@ function change_phase () {
             timer_next_phase.textContent = "NEXT UP: REST";
             timer_count.textContent = phase_duration = active_length;
             timer_phase.textContent = phase;
-            if (current_round.textContent == total_rounds.textContent)
+            if (current_round.textContent >= total_rounds.textContent)
                 timer_next_phase.textContent = "NEXT UP: COOLDOWN";
             break;
         case "COOLDOWN":
@@ -69,14 +68,15 @@ function count_down_seconds () {
         return;
     } else bg.style.backgroundColor = `var(--${phase})`;
 
-    timer_count.textContent--;
+    ticks++;
+    if (ticks % 10 == 0) timer_count.textContent--;
 
-    circle.style.strokeDashoffset = (2890 * (timer_count.textContent / phase_duration));
+    circle.style.stroke = "white";
     if (timer_count.textContent == phase_duration) circle.style.stroke = "var(--background-color)";
+    circle.style.strokeDashoffset = (2890 * (timer_count.textContent / phase_duration));
+    
 
-    if (timer_count.textContent == 0) {
-        change_phase();
-    }
+    if (timer_count.textContent == 0) change_phase();
 };
 
 function pause_play_timer () {
