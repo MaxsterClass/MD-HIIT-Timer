@@ -70,12 +70,13 @@ function count_down_seconds () {
     ticks++;
     if (ticks % 10 == 0) timer_count.textContent--;
     
-    if (timer_count.textContent == phase_duration) circle.style.stroke = "var(--background-color)";
-    else circle.style.stroke = "white";
+    circle.style.stroke = "white";
     circle.style.strokeDashoffset = (2890 * (timer_count.textContent / phase_duration));
-    
 
-    if (timer_count.textContent == 0) change_phase();
+    if (timer_count.textContent == 0) {
+        change_phase();
+        circle.style.stroke = "var(--background-color)";
+    }
 };
 
 function pause_play_timer () {
