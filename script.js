@@ -8,9 +8,8 @@ let current_round = document.getElementById("current-round");
 let total_rounds = document.getElementById("total-rounds");
 let pause_play_button = document.getElementById("pause-play-button");
 
-let timer_visible = true, first_time = false;
-let active_length = 60, rest_length = 30, warmup_length = 60, cooldown_length = 60;
-let phase_duration, phase, countdown = setInterval(count_down_seconds, 100), timer_is_paused = true, ticks  = 0;
+let timer_visible = true, first_time = false, active_length = 60, rest_length = 30, warmup_length = 60, cooldown_length = 60, 
+    phase_duration, phase, countdown = setInterval(count_down_seconds, 100), timer_is_paused = true, ticks = 0;
 
 window.onload = reset_timer();
 
@@ -70,9 +69,9 @@ function count_down_seconds () {
 
     ticks++;
     if (ticks % 10 == 0) timer_count.textContent--;
-
-    circle.style.stroke = "white";
+    
     if (timer_count.textContent == phase_duration) circle.style.stroke = "var(--background-color)";
+    else circle.style.stroke = "white";
     circle.style.strokeDashoffset = (2890 * (timer_count.textContent / phase_duration));
     
 
