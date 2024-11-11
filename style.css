@@ -14,7 +14,7 @@ body {
     text-align: center;
     font-family: 'Chakra Petch', Arial, Helvetica, sans-serif;
     background-color: var(--PAUSED);
-    transition: all 0.125s linear;
+    transition: all 0.2s linear;
     height: 100%;
     width: 100%;
 }
